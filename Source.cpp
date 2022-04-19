@@ -36,6 +36,22 @@ private:
 	T** tMatrix;
 
 public:
+
+	class iterator : public std::iterator<std::bidirectional_iterator_tag, T> {
+	public:
+		iterator();
+		iterator(const iterator& other);
+		iterator& operator=(const iterator& other);
+		T& operator*() const;
+		T* operator->() const;
+		bool operator==(const iterator& other) const;
+		bool operator!=(const iterator& o) const;
+		iterator& operator++();
+		iterator operator++(int);
+		iterator& operator--();
+		iterator operator--(int);
+	};
+
 	Matrix() {};
 
 	Matrix(std::vector<T> matrix) {
@@ -137,26 +153,6 @@ public:
 	}
 };
 
-//Task 3
-
-template<class T>
-class List {
-public:
-	class iterator : public std::iterator<std::bidirectional_iterator_tag, T> {
-	public:
-		iterator();
-		iterator(const iterator& other);
-		iterator& operator=(const iterator& other);
-		T& operator*() const;
-		T* operator->() const;
-		bool operator==(const iterator& other) const;
-		bool operator!=(const iterator& o) const;
-		iterator& operator++();
-		iterator operator++(int);
-		iterator& operator--();
-		iterator operator--(int);
-	};
-};
 
 
 int main() {
